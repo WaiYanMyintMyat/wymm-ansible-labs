@@ -1,0 +1,4 @@
+- hosts: web-server
+  become: true
+  roles:
+    - { role: web-server , tags: 'web-server'}

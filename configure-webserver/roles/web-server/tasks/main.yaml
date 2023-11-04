@@ -1,0 +1,21 @@
+- name: Install apache web server
+  dnf:
+    name: httpd
+    state: present
+- name: enable and start httpd service
+  systemd:
+    name: httpd
+    state: started
+    enabled: yes
+- name: create index file
+  copy:
+    content: "<!DOCTYPE html>
+              <html>
+              <head>
+                  <title>Hlaing Thar Yar</title>
+              </head>
+              <body>
+                  <h1>{{ apache.content }}</h1>
+              </body>
+              </html>"
+    dest: /var/www/html/index.html
